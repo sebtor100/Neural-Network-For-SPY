@@ -107,6 +107,7 @@ if __name__ == "__main__":
     run_analysis("SPY", train_first=True, epochs=50)
 
 This process can take several minutes depending on your hardware.
+---
 
 ### 2. Running Analysis with a Pre-Trained Model
 Once the `best_trading_model.pth` file exists, you can quickly analyze any ticker by setting `train_first=False`.
