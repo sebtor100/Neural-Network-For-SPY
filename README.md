@@ -116,13 +116,29 @@ if __name__ == "__main__":
     # This will load the existing model and run an analysis on "TSLA"
     run_analysis("TSLA", train_first=False)
 
-Code Structure
-TradingSignalNet: The PyTorch nn.Module class defining the LSTM + Attention network architecture.
-TradingDataset: Handles all data fetching (yfinance), feature engineering, normalization (StandardScaler), and sequence creation.
-TradingModelTrainer: Manages the model training loop, including using a WeightedRandomSampler to handle class imbalance, implementing early stopping, and saving the best model.
-EnhancedAdaptiveTradingSystem: The main orchestrator class that integrates the model, data, and trainer. It contains the core generate_ml_enhanced_signal logic.
-create_adaptive_visualization: A standalone function for generating the Matplotlib candlestick chart.
-run_analysis: The main function to execute a full training and/or analysis workflow.
+### Sample Output
+Running the analysis will produce a detailed report in your terminal and display a chart.
 
-Disclaimer
-This project is for educational and research purposes only. It is not financial advice. Trading financial markets involves substantial risk, and you should not make decisions based solely on the output of this tool. Always conduct your own thorough research and consult with a qualified financial advisor.
+**Terminal Report:**
+```text
+======================================================================
+ML-ENHANCED TRADING ANALYSIS: SPY
+======================================================================
+  FINAL SIGNAL:              BUY (Decision by ML Model)
+  FINAL CONFIDENCE:          75.4% (Reinforced by TA)
+----------------------------------------------------------------------
+  --- ML Model Analysis (Primary) ---
+  ML Signal:                 BUY
+  ML Confidence:             85.1%
+
+  --- Traditional Analysis (Fine-Tuning) ---
+  Traditional Signal:        BUY
+  Traditional Confidence:    67.0%
+  Signals Agreement:         True
+  Current Price:             $450.12
+  Nearest S/R Level:         $445.80 (1.0% away)
+  Stochastic %K:             25.31
+  Volatility Expansion:      -15.20%
+  Trend (20D/40D/200D):      up/up/up
+  MACD Hist Momentum:        Rising
+======================================================================
