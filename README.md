@@ -118,7 +118,3 @@ if __name__ == "__main__":
     run_analysis("SPY", train_first=True, epochs=50)
 
 
-if __name__ == "__main__":
-    # This will load the existing 'best_trading_model.pth' and run the
-    # analysis directly on "TSLA".
-    run_analysis("TSLA", train_first=False)
