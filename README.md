@@ -105,3 +105,24 @@ To do this, ensure the `train_first` parameter is set to `True` in the main exec
 if __name__ == "__main__":
     # This will train the model and then run an analysis on "SPY"
     run_analysis("SPY", train_first=True, epochs=50)
+
+This process can take several minutes depending on your hardware.
+
+### 2. Running Analysis with a Pre-Trained Model
+Once the `best_trading_model.pth` file exists, you can quickly analyze any ticker by setting `train_first=False`.
+
+```python
+if __name__ == "__main__":
+    # This will load the existing model and run an analysis on "TSLA"
+    run_analysis("TSLA", train_first=False)
+
+Code Structure
+TradingSignalNet: The PyTorch nn.Module class defining the LSTM + Attention network architecture.
+TradingDataset: Handles all data fetching (yfinance), feature engineering, normalization (StandardScaler), and sequence creation.
+TradingModelTrainer: Manages the model training loop, including using a WeightedRandomSampler to handle class imbalance, implementing early stopping, and saving the best model.
+EnhancedAdaptiveTradingSystem: The main orchestrator class that integrates the model, data, and trainer. It contains the core generate_ml_enhanced_signal logic.
+create_adaptive_visualization: A standalone function for generating the Matplotlib candlestick chart.
+run_analysis: The main function to execute a full training and/or analysis workflow.
+
+Disclaimer
+This project is for educational and research purposes only. It is not financial advice. Trading financial markets involves substantial risk, and you should not make decisions based solely on the output of this tool. Always conduct your own thorough research and consult with a qualified financial advisor.
